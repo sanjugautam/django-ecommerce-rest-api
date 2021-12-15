@@ -5,6 +5,7 @@ from django.db.models.signals import pre_save
 
 from core.models import Customer
 from orders.order_utils import unique_order_id_generator
+from products.models import Product
 
 ORDER_STATUS_CHOICES = (
     ('Not Shipped Yet', 'Not Shipped Yet'),
@@ -21,9 +22,10 @@ class Orders(models.Model):
     status = models.CharField(max_length=120, default='Not Shipped Yet', choices=ORDER_STATUS_CHOICES)
     order_price = models.DecimalField(default=0.0, max_digits=100, decimal_places=2, blank=False)
     shipping_address = models.CharField(max_length=200, blank=False)
+    order_items = models.ManyToManyField(Product)
 
     class Meta:
-        db_table = 'Orders'
+        db_table = 'Order'
 
     def __str__(self):
         return self.order_id

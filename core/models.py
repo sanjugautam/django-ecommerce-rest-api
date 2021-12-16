@@ -14,3 +14,5 @@ class Customer(AbstractUser):
 
     class Meta:
         db_table = 'Customers'
+        verbose_name_plural = 'Customers'
+

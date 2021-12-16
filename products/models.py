@@ -10,6 +10,7 @@ class ProductCategory(models.Model):
 
     class Meta:
         db_table = "ProductCategory"
+        verbose_name_plural = "ProductCategory"
 
     def __str__(self):
         return f"{self.name}"
@@ -27,6 +28,7 @@ class Product(models.Model):
 
     class Meta:
         db_table = "Product"
+        verbose_name_plural = "Products"
 
     def __str__(self):
         return f"{self.id}: {self.name}"
